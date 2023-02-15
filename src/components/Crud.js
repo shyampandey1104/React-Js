@@ -11,27 +11,28 @@ const Crud = () => {
     {
       id: 2,
       name: "CPU",
-      price: "2445",
+      price: "24845",
     },
     {
       id: 3,
       name: "KeyBoard",
-      price: "2445",
+      price: "28885",
     },
     {
       id: 4,
       name: "Mouse",
-      price: "2445",
+      price: "25545",
     },
+    
   ];
-  const [lists, setList] = useState(list);
+  let [lists, setList] = useState(list);
   const [updateState, setUpdateState] = useState(-1);
 
   return (
     <div className="crud">
       
       <div>
-        <AddList setList={setList} />
+        <AddList setList={setList} lists={lists}/>
         <form onSubmit={handleSubmit}>
           <table>
             {lists.map((current) =>
@@ -129,7 +130,7 @@ function EditList({ current, lists, setList }) {
   );
 }
 
-function AddList({ setList }) {
+function AddList({ setList,lists }) {
   const nameRef = useRef();
   const priceRef = useRef();
 
@@ -138,7 +139,7 @@ function AddList({ setList }) {
     const name = event.target.elements.name.value;
     const price = event.target.elements.price.value;
     const newlist = {
-      id: 3,
+      id: lists.length + 1,
       name,
       price,
     };
@@ -150,9 +151,10 @@ function AddList({ setList }) {
   }
   return (
     <form className="addForm" onSubmit={handleSubmit}>
-      <input type="text" name="name" placeholder="Enter Name" ref={nameRef} />
-      <input
-        type="text"
+      <input  className="input" type="text" name="name" placeholder="Enter Name" ref={nameRef} />
+
+      <input className="input"
+        type="number"
         name="price"
         placeholder="Enter Price"
         ref={priceRef}
