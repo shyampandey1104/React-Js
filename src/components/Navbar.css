@@ -1,0 +1,15 @@
+.Nav {
+    
+    float:left;
+    margin-left: 1500px;
+    font-size:20px;
+    font-weight: bold;
+    color:black !important;
+    text-transform: uppercase;
+    width: 100%;
+
+}
+.navbar {
+  position: fixed;
+
+}
